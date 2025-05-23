@@ -86,6 +86,9 @@ a {
     gap: 4px;
   }
 }
+#tinnumber{
+  color: white;
+}
 
 /* Hero Section */
 .hero {
