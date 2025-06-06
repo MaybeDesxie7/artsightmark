@@ -44,8 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const readMoreBtn = document.getElementById("readMoreBtn");
   const moreTestimonials = document.querySelector(".more-testimonials");
 
-  readMoreBtn.addEventListener("click", () => {
-    moreTestimonials.classList.remove("hidden");
-    readMoreBtn.style.display = "none"; // Optional: hide the button
-  });
+  if (readMoreBtn && moreTestimonials) {
+    readMoreBtn.addEventListener("click", () => {
+      moreTestimonials.classList.remove("hidden");
+      readMoreBtn.style.display = "none"; // hide the button after clicking
+    });
+  }
 });
