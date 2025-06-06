@@ -40,3 +40,36 @@ portfolioGallery.addEventListener('click', (e) => {
     e.target.scrollIntoView({ behavior: 'smooth', inline: 'center' });
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector('.testimonial-slider');
+  const testimonials = document.querySelectorAll('.testimonial');
+  const nextBtn = document.querySelector('.testimonial-nav.next');
+  const prevBtn = document.querySelector('.testimonial-nav.prev');
+
+  let currentIndex = 0;
+
+  function getCardWidth() {
+    return testimonials[0].getBoundingClientRect().width + 32; // 2rem = 32px gap
+  }
+
+  function updateSliderPosition() {
+    const cardWidth = getCardWidth();
+    slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < testimonials.length - 1) {
+      currentIndex++;
+      updateSliderPosition();
+    }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSliderPosition();
+    }
+  });
+
+  window.addEventListener('resize', updateSliderPosition); // Recalculate on resize
+});
